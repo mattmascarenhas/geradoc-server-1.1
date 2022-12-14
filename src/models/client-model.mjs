@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 import database from "../server/database.mjs";
 
-const Clientes = database.define("clientes", {
+const Clients = database.define("clientes", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -65,4 +65,4 @@ const Clientes = database.define("clientes", {
   },
 });
 
-export default Clientes;
+export default Clients;
