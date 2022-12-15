@@ -38,7 +38,7 @@ async function updateBlock(req, res) {
 
   await block.update(body);
   try {
-    return res.json(cliente);
+    return res.json(block);
   } catch (err) {
     return res.status(500).json({ erro: err.message });
   }

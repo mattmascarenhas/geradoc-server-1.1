@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 import database from "../server/database.mjs";
 
-const Blocks = database.define("textos", {
+const Blocks = database.define("blocos", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,

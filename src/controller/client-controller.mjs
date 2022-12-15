@@ -10,9 +10,10 @@ async function listAllClients(req, res) {
 }
 
 async function listOneClient(req, res) {
-  const clients = await Clients.findAll();
+  const idClient = req.params.id;
+  const client = await Clients.findByPk(idClient);
   try {
-    return res.status(201).json(clients);
+    return res.status(201).json(client);
   } catch (err) {
     return res.status(500).json({ erro: err.message });
   }
