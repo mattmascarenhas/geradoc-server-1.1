@@ -2,6 +2,7 @@ import express from "express";
 import ClienteController from "../controller/client-controller.mjs";
 import TextController from "../controller/text-controller.mjs";
 import BlockController from "../controller/block-controller.mjs";
+import ClientBlockController from "../controller/clientBlock-controller.mjs";
 
 const routes = express.Router();
 
@@ -21,5 +22,9 @@ routes.get("/blocks", BlockController.listAllBlocks);
 routes.post("/blocks", BlockController.createBlock);
 routes.delete("/blocks/:id", BlockController.deleteBlock);
 routes.put("/blocks/:id", BlockController.updateBlock);
-
+/*=================CLIENT - BLOCK==================== */
+routes.get("/clients-blocks", ClientBlockController.listAllClientsWithBlocks);
+routes.post("/clients-blocks", ClientBlockController.associateClientWithBlock);
+routes.delete("/clients-blocks/", ClientBlockController.deleteClientBlock);
+// routes.put("/clients-blocks/:id", ClientBlockController.);
 export default routes;
