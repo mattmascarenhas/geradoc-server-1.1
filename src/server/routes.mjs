@@ -3,6 +3,7 @@ import ClienteController from "../controller/client-controller.mjs";
 import TextController from "../controller/text-controller.mjs";
 import BlockController from "../controller/block-controller.mjs";
 import ClientBlockController from "../controller/clientBlock-controller.mjs";
+import BlockTextController from "../controller/blockText-controller.mjs";
 
 const routes = express.Router();
 
@@ -26,5 +27,9 @@ routes.put("/blocks/:id", BlockController.updateBlock);
 routes.get("/clients-blocks", ClientBlockController.listAllClientsWithBlocks);
 routes.post("/clients-blocks", ClientBlockController.associateClientWithBlock);
 routes.delete("/clients-blocks/", ClientBlockController.deleteClientBlock);
-// routes.put("/clients-blocks/:id", ClientBlockController.);
+/*=================BLOCK - TEXT==================== */
+routes.get("/blocks-texts", BlockTextController.listAllBlockTexts);
+routes.post("/blocks-texts", BlockTextController.associateBlockWithText);
+routes.delete("/blocks-texts/", BlockTextController.deleteBlockText);
+
 export default routes;
