@@ -20,13 +20,10 @@ async function associateClientWithBlock(req, res) {
 }
 
 async function deleteClientBlock(req, res) {
-  const body = req.body;
-  const clientWithBlock = await ClientBlock.destroy({
-    where: {
-      cliente_id: body.cliente_id,
-      bloco_id: body.bloco_id,
-    },
-  });
+  const id = req.params.id;
+  const clientBlockDelete = await ClientBlock.findByPk(id);
+
+  await clientBlockDelete.destroy();
   try {
     return res.json("Association Deleted!");
   } catch (err) {

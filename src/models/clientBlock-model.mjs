@@ -6,7 +6,6 @@ import Clients from "./client-model.mjs";
 const ClientBlock = database.define("clientes_blocos", {
   cliente_id: {
     type: Sequelize.INTEGER,
-    primaryKey: true,
   },
   bloco_id: {
     type: Sequelize.INTEGER,

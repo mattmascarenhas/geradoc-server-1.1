@@ -26,10 +26,10 @@ routes.put("/blocks/:id", BlockController.updateBlock);
 /*=================CLIENT - BLOCK==================== */
 routes.get("/clients-blocks", ClientBlockController.listAllClientsWithBlocks);
 routes.post("/clients-blocks", ClientBlockController.associateClientWithBlock);
-routes.delete("/clients-blocks/", ClientBlockController.deleteClientBlock);
+routes.delete("/clients-blocks/:id", ClientBlockController.deleteClientBlock);
 /*=================BLOCK - TEXT==================== */
 routes.get("/blocks-texts", BlockTextController.listAllBlockTexts);
 routes.post("/blocks-texts", BlockTextController.associateBlockWithText);
-routes.delete("/blocks-texts/", BlockTextController.deleteBlockText);
+routes.delete("/blocks-texts/:id", BlockTextController.deleteBlockText);
 
 export default routes;

@@ -1,36 +1,33 @@
 import BlockText from "../models/blockText-model.mjs";
-import database from "../server/database.mjs";
 
 async function listAllBlockTexts(req, res) {
-  const blockTexts = await BlockText.findAll();
   try {
-    return res.status(201).json(blockTexts);
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const blockTexts = await BlockText.findAll();
+    res.status(201).json(blockTexts);
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao salvar blocos de texto", error });
   }
 }
 
 async function associateBlockWithText(req, res) {
-  const body = req.body;
-  const blockWithText = await BlockText.bulkCreate(body);
   try {
-    return res.status(201).json(blockWithText);
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
+    const body = req.body;
+    await BlockText.bulkCreate(body);
+    res.send({ message: "Blocos de texto salvos com sucesso", body });
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao salvar blocos de texto", error });
   }
 }
 
 async function deleteBlockText(req, res) {
-  const body = req.body;
-  const blockText = await BlockText.destroy({
-    where: {
-      bloco_id: body.bloco_id,
-    },
-  });
   try {
-    return res.json("Association Deleted!");
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const id = req.params.id;
+    const blockText = await BlockText.findByPk(id);
+
+    await blockText.destroy();
+    res.json("Association Deleted!");
+  } catch (error) {
+    res.status(500).send({ message: "Esse bloco não existe", error });
   }
 }
 
