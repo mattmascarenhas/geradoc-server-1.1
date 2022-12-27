@@ -1,56 +1,61 @@
 import Clients from "../models/client-model.mjs";
 
 async function listAllClients(req, res) {
-  const clients = await Clients.findAll();
   try {
-    return res.status(201).json(clients);
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const clients = await Clients.findAll();
+
+    res.status(201).json(clients);
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao listar os clientes!", error });
   }
 }
 
 async function listOneClient(req, res) {
-  const idClient = req.params.id;
-  const client = await Clients.findByPk(idClient);
   try {
-    return res.status(201).json(client);
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const idClient = req.params.id;
+    const client = await Clients.findByPk(idClient);
+
+    res.status(201).json(client);
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao listar o cliente!", error });
   }
 }
 
 async function createClient(req, res) {
-  const body = req.body;
-  const client = await Clients.create(body);
   try {
-    return res.status(201).json(client);
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
+    const body = req.body;
+    const client = await Clients.create(body);
+
+    res.status(201).json(client);
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao criar o cliente!", error });
   }
 }
 
 async function deleteClient(req, res) {
-  const idClient = req.params.id;
-  const client = await Clients.findByPk(idClient);
-
-  await client.destroy();
   try {
-    return res.json("Client Deleted!");
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const idClient = req.params.id;
+    const client = await Clients.findByPk(idClient);
+
+    await client.destroy();
+
+    res.json("Client Deleted!");
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao deletar o cliente!", error });
   }
 }
 
 async function updateClient(req, res) {
-  const idClient = req.params.id;
-  const body = req.body;
-  const cliente = await Clients.findByPk(idClient);
-
-  await cliente.update(body);
   try {
-    return res.json(cliente);
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const idClient = req.params.id;
+    const body = req.body;
+    const cliente = await Clients.findByPk(idClient);
+
+    await cliente.update(body);
+
+    res.json(cliente);
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao atualizar o cliente!", error });
   }
 }
 

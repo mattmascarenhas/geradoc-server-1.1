@@ -1,33 +1,42 @@
 import ClientBlock from "../models/clientBlock-model.mjs";
 
 async function listAllClientsWithBlocks(req, res) {
-  const clientsBlocks = await ClientBlock.findAll();
   try {
-    return res.status(201).json(clientsBlocks);
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const clientsBlocks = await ClientBlock.findAll();
+
+    res.status(201).json(clientsBlocks);
+  } catch (error) {
+    res
+      .status(500)
+      .send({ message: "Erro ao listar os clientes e blocos!", error });
   }
 }
 
 async function associateClientWithBlock(req, res) {
-  const body = req.body;
-  const clientWithBlock = await ClientBlock.create(body);
   try {
-    return res.status(201).json(clientWithBlock);
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
+    const body = req.body;
+    const clientWithBlock = await ClientBlock.create(body);
+
+    res.status(201).json(clientWithBlock);
+  } catch (error) {
+    res
+      .status(500)
+      .send({ message: "Erro ao associar cliente e bloco!", error });
   }
 }
 
 async function deleteClientBlock(req, res) {
-  const id = req.params.id;
-  const clientBlockDelete = await ClientBlock.findByPk(id);
-
-  await clientBlockDelete.destroy();
   try {
-    return res.json("Association Deleted!");
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const id = req.params.id;
+    const clientBlockDelete = await ClientBlock.findByPk(id);
+
+    await clientBlockDelete.destroy();
+
+    res.json("Association Deleted!");
+  } catch (error) {
+    res
+      .status(500)
+      .send({ message: "Erro ao deletar cliente e bloco!", error });
   }
 }
 

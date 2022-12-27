@@ -1,33 +1,33 @@
 import Blocks from "../models/block-model.mjs";
 
 async function listAllBlocks(req, res) {
-  const blocks = await Blocks.findAll();
   try {
-    return res.status(201).json(blocks);
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const blocks = await Blocks.findAll();
+    res.status(201).json(blocks);
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao os blocos!", error });
   }
 }
 
 async function createBlock(req, res) {
-  const body = req.body;
-  const block = await Blocks.create(body);
   try {
-    return res.status(201).json(block);
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const body = req.body;
+    const block = await Blocks.create(body);
+    res.status(201).json(block);
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao criar um bloco!", error });
   }
 }
 
 async function deleteBlock(req, res) {
-  const idBlock = req.params.id;
-  const block = await Blocks.findByPk(idBlock);
-
-  await block.destroy();
   try {
-    return res.json("Block Deleted!");
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    const idBlock = req.params.id;
+    const block = await Blocks.findByPk(idBlock);
+
+    await block.destroy();
+    res.json("Block Deleted!");
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao deletar o bloco!", error });
   }
 }
 
@@ -38,9 +38,9 @@ async function updateBlock(req, res) {
 
   await block.update(body);
   try {
-    return res.json(block);
-  } catch (err) {
-    return res.status(500).json({ erro: err.message });
+    res.json(block);
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao atualizar o bloco!", error });
   }
 }
 export default {
