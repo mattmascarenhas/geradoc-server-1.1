@@ -4,6 +4,7 @@ import TextController from "../controller/text-controller.mjs";
 import BlockController from "../controller/block-controller.mjs";
 import ClientBlockController from "../controller/clientBlock-controller.mjs";
 import BlockTextController from "../controller/blockText-controller.mjs";
+import UserController from "../controller/authUser-controller.mjs";
 
 const routes = express.Router();
 
@@ -31,5 +32,8 @@ routes.delete("/clients-blocks/:id", ClientBlockController.deleteClientBlock);
 routes.get("/blocks-texts", BlockTextController.listAllBlockTexts);
 routes.post("/blocks-texts", BlockTextController.associateBlockWithText);
 routes.delete("/blocks-texts/:id", BlockTextController.deleteBlockText);
+/*=================Usuários==================== */
+routes.get("/users", UserController.singInRequest);
+routes.get("/users/:id", UserController.listOneUser);
 
 export default routes;
