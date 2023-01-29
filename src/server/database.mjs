@@ -1,9 +1,25 @@
 import Sequelize from "sequelize";
+import dotenv from "dotenv";
+dotenv.config();
 
-const database = new Sequelize("geradoc", "root", "root", {
-  host: "localhost",
-  dialect: "mysql",
-});
+const database = new Sequelize(
+  process.env.MYSQLDATABASE,
+  process.env.MYSQLUSER,
+  process.env.MYSQLPASSWORD,
+  {
+    host: process.env.MYSQLHOST,
+    dialect: "mysql",
+    ssl: true,
+    dialectOptions: {
+      ssl: { rejectUnauthorized: true },
+    },
+  }
+);
+
+// const database = new Sequelize("railway", "root", "0nW3aBxA1d547jwHpoLD", {
+//   host: "containers-us-west-46.railway.app",
+//   dialect: "mysql",
+// });
 
 database
   .authenticate()

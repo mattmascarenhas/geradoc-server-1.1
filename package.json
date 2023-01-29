@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "node-dev src/server/server.mjs ",
+    "dev": " node-dev src/server/server.mjs --trace-warnings ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,9 +13,11 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mysql2": "^2.3.3",
     "node-dev": "^7.4.3",
-    "sequelize": "^6.27.0"
+    "sequelize": "^6.27.0",
+    "sqlite3": "^5.1.4"
   }
 }
