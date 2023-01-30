@@ -16,11 +16,6 @@ const database = new Sequelize(
   }
 );
 
-// const database = new Sequelize("railway", "root", "0nW3aBxA1d547jwHpoLD", {
-//   host: "containers-us-west-46.railway.app",
-//   dialect: "mysql",
-// });
-
 database
   .authenticate()
   .then(() => {
