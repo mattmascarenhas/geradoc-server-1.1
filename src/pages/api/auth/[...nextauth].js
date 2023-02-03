@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { redirect } from "next/dist/server/api-utils";
 
 export const authOptions = {
   session: {
@@ -25,26 +24,12 @@ export const authOptions = {
       },
     }),
   ],
-  // callbacks: {
-  //   jwt: async ({ token, user }) => {
-  //     if (user) token.id = user.id;
-  //     return token;
-  //   },
-  //   session: ({ session, token }) => {
-  //     if (token) session.id = token.id;
-  //     return session;
-  //   },
-  // },
-  // secret: "test",
-  // jwt: {
-  //   secret: "test",
-  //   encryption: true,
-  // },
   pages: {
     signIn: "auth/signin",
     // error: "auth/error",
     // signOut: "auth/signout",
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 export default NextAuth(authOptions);
