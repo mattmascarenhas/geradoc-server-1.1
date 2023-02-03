@@ -1,38 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Resumo</h1><p>Sistema feito para um escritório de advocácia.</p><p><br></p><p>O intuito do sistema é cadastrar clientes, textos e blocos, para que no final um arquivo .doc seja gerado com os dados desejados.&nbsp;</p><p><br></p><p>A ideia do sistema, é um advogado ter, por exemplo, diversos textos referentes a leis.</p><p>Ele poderá criar um bloco e inserir esses textos como desejar. Esses textos podem existir em blocos diferentes.</p><p><br></p><p>Vamos supor que um texto está se referindo a uma lei que por ventura mudou, e esse texto está atrelado a vários blocos e clientes. No momento em que ele editar texto, a mudança surtirá efeito em todos os blocos de todos os clientes que contém aquele texto, facilitando a vida do advogado, onde não irá precisar mais mudar de maneira manual procurando os blocos que contém aquela determinada informação.</p><p><br></p><h1>Back-End</h1><h2>Banco de dados</h2><p>Toda a base de dados foi feita através do Prisma, usando o SQLite para armazenar os dados.</p><p>O schema é composto por três models:<strong> Client, Block, Text </strong>.</p><ul><li>Um <strong>Client </strong>pode ter vários <strong>Blocks.</strong></li><li>Um <strong>Block </strong>pode ter vários <strong>Texts.</strong></li><li><strong>Text </strong>contém uma referência não obrigatória a <strong>Blocks.</strong></li></ul><p><br></p><h2>Node.js</h2><p>Rotas criadas para o sistema:</p><ul><li><strong>Client, Block, Text </strong>- Rota <strong>get </strong>para listar um único cliente, bloco ou texto e todos os clientes, blocos ou textos.</li><li><strong>Client, Block, Text </strong>- Rota <strong>post </strong>para listar um cliente, bloco ou texto.</li><li><strong>Client, Block, Text </strong>- Rota <strong>put </strong>para editar um cliente, bloco ou texto.</li><li><strong>Client, Block, Text </strong>- Rota <strong>delete </strong>para deletar um determinado cliente, bloco ou texto(busca feita pelo id).</li><li><strong>OBS: Client, Block, Text - </strong>Para cada função citada acima, cada um possui uma rota individual.</li></ul><p><br></p><h1>Front-End</h1><h2>React</h2><p>O Next.js foi escolhido para fazer a integração do react ao sistema.</p><p>A aplicação foi feita em componentes funcionais, fazendo o uso de Hooks.</p><p>As rotas com endereços URL foram todas direcionadas através do modo no qual o Next.js trabalha.</p><p>Como mecanismo de estilização, a ferramenta TailwindCSS foi a utilizada, pela praticidade em aplicar estilos CSS.</p><p><br></p><h1>Progresso</h1><h2>Back-End</h2><p>Banco de dados: <strong>100%</strong></p><p>Rotas do server: <strong>100¨%</strong></p><p>Server: <strong>100%</strong></p><h2>Front-End</h2><p>Telas referente a Client:<strong> 100%</strong></p><ul><li>Todas as funções do CRUD</li></ul><p>Telas referente a Text:<strong> 100%</strong></p><ul><li>Todas as funções do CRUD</li></ul><p>Telas referente a Block: <strong>10000%</strong></p><ul><li>Associação de Texts e Blocks</li></ul><p>Inserção da tela de Login: <strong>100%</strong></p><p>Ferramenta parar gerar um aquivo .doc:<strong> 0%</strong></p><p><br></p>
+<h1>Imagens do sistema</h1>
 
-## Getting Started
+![alt text](https://github.com/mattmascarenhas/geradoc-nextjs-crud-complete/blob/main/public/clients.png)
 
-First, run the development server:
+![alt text](https://github.com/mattmascarenhas/geradoc-nextjs-crud-complete/blob/main/public/texts.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+![alt text](https://github.com/mattmascarenhas/geradoc-nextjs-crud-complete/blob/main/public/client-edit.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![alt text](https://github.com/mattmascarenhas/geradoc-nextjs-crud-complete/blob/main/public/client-modal.png)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+![alt text](https://github.com/mattmascarenhas/geradoc-nextjs-crud-complete/blob/main/public/client-new.png)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+![alt text](https://github.com/mattmascarenhas/geradoc-nextjs-crud-complete/blob/main/public/text-edit-1.png)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+![alt text](https://github.com/mattmascarenhas/geradoc-nextjs-crud-complete/blob/main/public/text-edit-2.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![alt text](https://github.com/mattmascarenhas/geradoc-nextjs-crud-complete/blob/main/public/text-view.png)
