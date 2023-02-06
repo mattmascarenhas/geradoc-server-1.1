@@ -35,5 +35,6 @@ routes.delete("/blocks-texts/:id", BlockTextController.deleteBlockText);
 /*=================Usuários==================== */
 routes.get("/users", UserController.listAllUsers);
 routes.get("/users/:id", UserController.listOneUser);
+routes.post("/users/", UserController.authenticate);
 
 export default routes;

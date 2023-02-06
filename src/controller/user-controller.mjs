@@ -21,7 +21,28 @@ async function listOneUser(req, res) {
   }
 }
 
+async function authenticate(req, res) {
+  try {
+    const { email, senha } = req.body;
+    const user = await Users.findOne({
+      where: {
+        email: email,
+        senha: senha,
+      },
+    });
+
+    if (!user) {
+      return res.status(401).json({ message: "Credenciais inválidas" });
+    }
+
+    return res.json(user);
+  } catch (error) {
+    res.status(500).send({ message: "Erro ao tentar autenticação!", error });
+  }
+}
+
 export default {
   listAllUsers,
   listOneUser,
+  authenticate,
 };
